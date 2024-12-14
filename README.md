@@ -1,2 +1,2 @@
 # Interview-Problems
- Problems, tasks and challenges for Data Jobs Interviews
+Coding Tasks and challenges to practice for Interviews

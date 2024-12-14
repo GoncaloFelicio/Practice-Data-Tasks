@@ -2,6 +2,7 @@
 Scraping-Domains/venv
 
 # Data files
+Scraping-Domains/*.docx
 Scraping-Domains/*.csv
 Scraping-Domains/domains_batched
 Scraping-Domains/output_batched
