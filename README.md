@@ -1,2 +1,2 @@
 # Data-Problems
-Small coding tasks and challenges to practice data case studies
+Coding tasks and challenges to practice data case studies
