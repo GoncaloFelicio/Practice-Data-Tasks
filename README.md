@@ -1,2 +1,2 @@
-# Interview-Problems
-Coding Tasks and challenges to practice for Interviews
+# Data-Problems
+Coding tasks and challenges to practice data case studies
