@@ -22,6 +22,9 @@ Employee-Analysis/venvprd
 Employee-Analysis/image/__pycache__
 
 
+#AirCargo-Capacity
+AirCargo-Capacity/venv
+
 # Environments
 .env
 .venv
