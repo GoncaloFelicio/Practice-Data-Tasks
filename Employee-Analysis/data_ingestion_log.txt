@@ -1,0 +1,476 @@
+2025-01-10 19:22:08,559:INFO:Reading data from file: levels.csv. Number of records: 6
+2025-01-10 19:22:08,567:INFO:Data ingestion successful for table: levels. 
+                     Number of records inserted: 6
+2025-01-10 19:22:59,718:INFO:Reading data from file: levels.csv. Number of records: 6
+2025-01-10 19:22:59,729:ERROR:Error during ingestion of df.
+Traceback (most recent call last):
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1936, in _exec_single_context
+    self.dialect.do_executemany(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\dialects\mysql\mysqldb.py", line 170, in do_executemany
+    rowcount = cursor.executemany(statement, parameters)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 241, in executemany
+    return self._do_execute_many(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 275, in _do_execute_many
+    rows += self.execute(sql + postfix)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\connections.py", line 265, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1062, "Duplicate entry '1' for key 'levels.PRIMARY'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Goncalo\AppData\Local\Temp\ipykernel_4084\290232288.py", line 6, in ingest_df_to_mysql
+    df.to_sql(table_name, con=engine, if_exists='append', index=False)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\core\generic.py", line 3087, in to_sql
+    return sql.to_sql(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 842, in to_sql
+    return pandas_sql.to_sql(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 2018, in to_sql
+    total_inserted = sql_engine.insert_records(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 1567, in insert_records
+    raise err
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 1558, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 1119, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 1010, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1936, in _exec_single_context
+    self.dialect.do_executemany(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\dialects\mysql\mysqldb.py", line 170, in do_executemany
+    rowcount = cursor.executemany(statement, parameters)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 241, in executemany
+    return self._do_execute_many(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 275, in _do_execute_many
+    rows += self.execute(sql + postfix)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\connections.py", line 265, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.IntegrityError: (MySQLdb.IntegrityError) (1062, "Duplicate entry '1' for key 'levels.PRIMARY'")
+[SQL: INSERT INTO levels (id, level_name) VALUES (%s, %s)]
+[parameters: [(1, 'Junior'), (2, 'Mid'), (3, 'Senior'), (4, 'Lead'), (5, 'Manager'), (6, 'Director')]]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-01-10 19:24:27,372:INFO:
+Reading data from file: levels.csv. Number of records: 6
+2025-01-10 19:24:27,379:ERROR:
+Error during ingestion of df.
+Traceback (most recent call last):
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1936, in _exec_single_context
+    self.dialect.do_executemany(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\dialects\mysql\mysqldb.py", line 170, in do_executemany
+    rowcount = cursor.executemany(statement, parameters)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 241, in executemany
+    return self._do_execute_many(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 275, in _do_execute_many
+    rows += self.execute(sql + postfix)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\connections.py", line 265, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1062, "Duplicate entry '1' for key 'levels.PRIMARY'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Goncalo\AppData\Local\Temp\ipykernel_4084\2049905513.py", line 6, in ingest_df_to_mysql
+    df.to_sql(table_name, con=engine, if_exists='append', index=False)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\core\generic.py", line 3087, in to_sql
+    return sql.to_sql(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 842, in to_sql
+    return pandas_sql.to_sql(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 2018, in to_sql
+    total_inserted = sql_engine.insert_records(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 1567, in insert_records
+    raise err
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 1558, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 1119, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\pandas\io\sql.py", line 1010, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1936, in _exec_single_context
+    self.dialect.do_executemany(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\sqlalchemy\dialects\mysql\mysqldb.py", line 170, in do_executemany
+    rowcount = cursor.executemany(statement, parameters)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 241, in executemany
+    return self._do_execute_many(
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 275, in _do_execute_many
+    rows += self.execute(sql + postfix)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "c:\Users\Goncalo\Documents\Github\Data-Eng-Assessment-temp\venv\lib\site-packages\MySQLdb\connections.py", line 265, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.IntegrityError: (MySQLdb.IntegrityError) (1062, "Duplicate entry '1' for key 'levels.PRIMARY'")
+[SQL: INSERT INTO levels (id, level_name) VALUES (%s, %s)]
+[parameters: [(1, 'Junior'), (2, 'Mid'), (3, 'Senior'), (4, 'Lead'), (5, 'Manager'), (6, 'Director')]]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-01-10 19:28:10,267:INFO:
+Reading data from file: employees.csv. Number of records: 1435
+2025-01-10 19:28:10,363:INFO:
+Data ingestion successful for table: employees. Number of records inserted: 1435
+2025-01-10 19:30:20,026:INFO:
+Reading data from file: levels.csv. Number of records: 6
+2025-01-10 19:30:49,569:INFO:
+Reading data from file: levels.csv. Number of records: 6
+2025-01-10 19:30:49,577:ERROR:
+Error during ingestion of df.
+2025-01-10 19:32:11,627:INFO:
+Reading data from file: levels.csv. Number of records: 6
+2025-01-10 19:32:11,634:ERROR:
+Error during ingestion of df: 
+{e}
+2025-01-10 19:32:29,094:INFO:
+Reading data from file: levels.csv. Number of records: 6
+2025-01-10 19:32:29,101:ERROR:
+Error during ingestion of df: 
+(MySQLdb.IntegrityError) (1062, "Duplicate entry '1' for key 'levels.PRIMARY'")
+[SQL: INSERT INTO levels (id, level_name) VALUES (%s, %s)]
+[parameters: [(1, 'Junior'), (2, 'Mid'), (3, 'Senior'), (4, 'Lead'), (5, 'Manager'), (6, 'Director')]]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-01-10 19:43:16,869:INFO:Table: departments
+2025-01-10 19:43:16,869:INFO: - Column: id, Type: INTEGER
+2025-01-10 19:43:16,869:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-10 19:43:16,869:INFO:Table: departments
+2025-01-10 19:43:16,871:INFO:(1, 'Fred')
+2025-01-10 19:43:56,588:INFO:Table: departments
+2025-01-10 19:43:56,588:INFO: - Column: id, Type: INTEGER
+2025-01-10 19:43:56,588:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-10 19:43:56,588:INFO:Table: employees
+2025-01-10 19:43:56,588:INFO: - Column: id, Type: INTEGER
+2025-01-10 19:43:56,588:INFO: - Column: first_name, Type: VARCHAR(50)
+2025-01-10 19:43:56,588:INFO: - Column: last_name, Type: VARCHAR(50)
+2025-01-10 19:43:56,588:INFO: - Column: date_of_birth, Type: DATE
+2025-01-10 19:43:56,588:INFO: - Column: department_id, Type: INTEGER
+2025-01-10 19:43:56,588:INFO: - Column: date_started, Type: DATE
+2025-01-10 19:43:56,588:INFO: - Column: level_id, Type: INTEGER
+2025-01-10 19:43:56,588:INFO: - Column: salary, Type: INTEGER
+2025-01-10 19:43:56,588:INFO:Table: levels
+2025-01-10 19:43:56,588:INFO: - Column: id, Type: INTEGER
+2025-01-10 19:43:56,588:INFO: - Column: level_name, Type: VARCHAR(50)
+2025-01-10 19:43:56,588:INFO:Table: examples
+2025-01-10 19:43:56,588:INFO: - Column: id, Type: INTEGER
+2025-01-10 19:43:56,588:INFO: - Column: name, Type: VARCHAR(50)
+2025-01-10 19:43:56,588:INFO:Table: examples
+2025-01-10 19:43:56,588:INFO:(1, 'Fred')
+2025-01-10 19:46:16,594:INFO:Table: departments
+2025-01-10 19:46:16,594:INFO: - Column: id, Type: INTEGER
+2025-01-10 19:46:16,594:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-10 19:46:16,594:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-10 19:46:55,598:INFO:First table in database: departments
+2025-01-10 19:46:55,598:INFO: - Column: id, Type: INTEGER
+2025-01-10 19:46:55,598:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-10 19:46:55,598:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-10 21:19:03,811:INFO:
+Reading data from file: employees.csv. Number of records: 1435
+2025-01-10 22:31:39,093:INFO:
+Reading data from file: employees.csv. Number of records: 1435
+2025-01-11 12:13:32,894:INFO:First table in database: departments
+2025-01-11 12:13:32,895:INFO: - Column: id, Type: INTEGER
+2025-01-11 12:13:32,895:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-11 12:13:32,897:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-11 12:17:16,014:INFO:First table in database: departments
+2025-01-11 12:17:16,014:INFO: - Column: id, Type: INTEGER
+2025-01-11 12:17:16,014:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-11 12:17:16,016:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-11 12:17:34,112:INFO:First table in database: departments
+2025-01-11 12:17:34,112:INFO: - Column: id, Type: INTEGER
+2025-01-11 12:17:34,112:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-11 12:17:34,112:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-11 12:17:34,133:INFO:
+Reading data from file: employees.csv. Number of records: 1435
+2025-01-11 12:17:39,473:INFO:First table in database: departments
+2025-01-11 12:17:39,474:INFO: - Column: id, Type: INTEGER
+2025-01-11 12:17:39,474:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-11 12:17:39,476:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-11 12:17:39,479:INFO:
+Reading data from file: employees.csv. Number of records: 1435
+2025-01-11 12:17:43,265:INFO:First table in database: departments
+2025-01-11 12:17:43,265:INFO: - Column: id, Type: INTEGER
+2025-01-11 12:17:43,265:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-11 12:17:43,267:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-11 12:17:43,270:INFO:
+Reading data from file: employees.csv. Number of records: 1435
+2025-01-11 12:18:00,431:INFO:First table in database: departments
+2025-01-11 12:18:00,432:INFO: - Column: id, Type: INTEGER
+2025-01-11 12:18:00,432:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-11 12:18:00,433:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-11 12:18:00,437:INFO:
+Reading data from file: employees.csv. Number of records: 1435
+2025-01-11 17:47:37,464:INFO:First table in database: departments
+2025-01-11 17:47:37,464:INFO: - Column: id, Type: INTEGER
+2025-01-11 17:47:37,464:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-11 17:47:37,464:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-11 17:54:02,190:INFO:First table in database: departments
+2025-01-11 17:54:02,190:INFO: - Column: id, Type: INTEGER
+2025-01-11 17:54:02,190:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-11 17:54:02,193:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-11 17:54:02,201:INFO:
+Reading data from file: employees.csv. Number of records: 1435
+2025-01-11 17:56:24,958:INFO:First table in database: departments
+2025-01-11 17:56:24,959:INFO: - Column: id, Type: INTEGER
+2025-01-11 17:56:24,959:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-11 17:56:24,960:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-11 17:57:40,100:INFO:Age, years_in_company and age_at_start columns added successfully.
+2025-01-11 18:15:39,019:INFO:Data updated in Age, years_in_company and age_at_start column successfully.
+2025-01-11 18:15:39,019:INFO:Updated 1435 records
+2025-01-11 18:17:35,813:INFO:First table in database: departments
+2025-01-11 18:17:35,814:INFO: - Column: id, Type: INTEGER
+2025-01-11 18:17:35,814:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-11 18:17:35,816:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-11 18:27:55,251:INFO:Data updated in Age, years_in_company and age_at_start column successfully.
+2025-01-11 18:27:55,251:INFO:Updated 1435 records
+2025-01-11 18:32:13,027:INFO:Data updated in Age, years_in_company and age_at_start column successfully.
+2025-01-11 18:33:00,784:INFO:Data updated in Age, years_in_company and age_at_start column successfully.
+2025-01-11 18:37:37,611:INFO:Data updated in Age, years_in_company and age_at_start column successfully.
+2025-01-11 18:39:43,233:INFO:Data updated in Age, years_in_company and age_at_start column successfully.
+2025-01-11 18:39:43,233:INFO:Updated 1435 records
+2025-01-12 13:53:49,869:INFO:First table in database: departments
+2025-01-12 13:53:49,869:INFO: - Column: id, Type: INTEGER
+2025-01-12 13:53:49,869:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-12 13:53:49,871:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-12 13:54:00,443:INFO:First table in database: departments
+2025-01-12 13:54:00,443:INFO: - Column: id, Type: INTEGER
+2025-01-12 13:54:00,443:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-12 13:54:00,445:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-12 13:54:00,459:INFO:
+Reading data from file: employees.csv. Number of records: 1435
+2025-01-12 13:56:17,347:INFO:First table in database: departments
+2025-01-12 13:56:17,347:INFO: - Column: id, Type: INTEGER
+2025-01-12 13:56:17,347:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-12 13:56:17,349:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-12 13:59:05,900:INFO:First table in database: departments
+2025-01-12 13:59:05,900:INFO: - Column: id, Type: INTEGER
+2025-01-12 13:59:05,900:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-12 13:59:05,902:INFO:Printing first row of table examples: (1, 'Fred')
+2025-01-12 14:18:30,362:INFO:Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-01-12 14:18:30,367:INFO:Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-01-12 16:28:24,510:INFO:
+Reading data from file: departments.csv. Number of records: 5
+2025-01-12 16:28:24,511:INFO:   id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 16:28:24,511:INFO:=====Summary of df=====
+2025-01-12 16:28:24,511:INFO:Shape: (5, 2)
+2025-01-12 16:28:24,511:INFO:NaN ratio:
+2025-01-12 16:28:24,511:INFO:            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 16:30:19,678:INFO:
+Reading data from file: departments.csv. Number of records: 5
+2025-01-12 16:30:19,679:INFO:
+   id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 16:30:19,679:INFO:
+=====Summary of df=====
+2025-01-12 16:30:19,679:INFO:Shape: (5, 2)
+2025-01-12 16:30:19,680:INFO:            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 16:30:46,990:INFO:
+   Reading data from file: departments.csv. Number of records: 5
+2025-01-12 16:30:46,991:INFO:
+   id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 16:30:46,991:INFO:
+   =====Summary of df=====
+2025-01-12 16:30:46,991:INFO: Shape: (5, 2)
+2025-01-12 16:30:46,992:INFO:            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 16:31:18,545:INFO:
+   Reading data from file: departments.csv. Number of records: 5
+2025-01-12 16:31:18,546:INFO:
+   id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 16:31:18,546:INFO:=====Summary of df=====
+2025-01-12 16:31:18,546:INFO: Shape: (5, 2)
+2025-01-12 16:31:18,547:INFO:            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 16:32:41,131:INFO:
+   Reading data from file: departments.csv. Number of records: 5
+2025-01-12 16:32:41,131:INFO:
+   id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 16:32:41,131:INFO:=====Summary of df=====
+2025-01-12 16:32:41,131:INFO: Shape: (5, 2)
+2025-01-12 16:32:41,134:INFO:
+            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 17:12:08,985:INFO:Table in database: departments
+2025-01-12 17:12:08,985:INFO: - Column: id, Type: INTEGER
+2025-01-12 17:12:08,985:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-12 17:12:08,985:INFO:Table in database: employees
+2025-01-12 17:12:08,985:INFO: - Column: id, Type: INTEGER
+2025-01-12 17:12:08,985:INFO: - Column: first_name, Type: VARCHAR(50)
+2025-01-12 17:12:08,985:INFO: - Column: last_name, Type: VARCHAR(50)
+2025-01-12 17:12:08,985:INFO: - Column: date_of_birth, Type: DATE
+2025-01-12 17:12:08,985:INFO: - Column: department_id, Type: INTEGER
+2025-01-12 17:12:08,985:INFO: - Column: date_started, Type: DATE
+2025-01-12 17:12:08,985:INFO: - Column: level_id, Type: INTEGER
+2025-01-12 17:12:08,985:INFO: - Column: salary, Type: INTEGER
+2025-01-12 17:12:08,985:INFO: - Column: age, Type: INTEGER
+2025-01-12 17:12:08,985:INFO: - Column: years_at_company, Type: INTEGER
+2025-01-12 17:12:08,985:INFO: - Column: age_at_start, Type: INTEGER
+2025-01-12 17:12:08,985:INFO:Table in database: levels
+2025-01-12 17:12:08,985:INFO: - Column: id, Type: INTEGER
+2025-01-12 17:12:08,985:INFO: - Column: level_name, Type: VARCHAR(50)
+2025-01-12 17:12:08,985:INFO:Table in database: examples
+2025-01-12 17:12:08,985:INFO: - Column: id, Type: INTEGER
+2025-01-12 17:12:08,985:INFO: - Column: name, Type: VARCHAR(50)
+2025-01-12 17:12:08,985:INFO:Printing first row of table examples
+2025-01-12 17:12:08,985:INFO:(1, 'Fred')
+2025-01-12 17:12:08,985:INFO:(2, 'Daphne')
+2025-01-12 17:12:08,985:INFO:(3, 'Velma')
+2025-01-12 17:12:08,985:INFO:(4, 'Shaggy')
+2025-01-12 17:12:08,985:INFO:(5, 'Scooby')
+2025-01-12 17:13:43,287:INFO:=====Summary of DataFrame=====
+2025-01-12 17:13:43,287:INFO: Shape: (1435, 13)
+2025-01-12 17:13:43,292:INFO:            id  first_name  last_name  date_of_birth  department_id  \
+NaN Ratio  0.0         0.0        0.0            0.0            0.0   
+
+           date_started  level_id  salary  age  years_at_company  \
+NaN Ratio           0.0       0.0     0.0  0.0               0.0   
+
+           age_at_start  age_bin  years_bin  
+NaN Ratio           0.0      0.0        0.0  
+2025-01-12 17:14:15,138:INFO:=====Summary of DataFrame=====
+2025-01-12 17:14:15,138:INFO: Shape: (5, 2)
+2025-01-12 17:14:15,141:INFO:            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 17:14:58,220:INFO: Reading data from file: departments.csv. Number of records: 5
+2025-01-12 17:14:58,221:INFO:    id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 17:15:29,584:INFO: Reading data from file: departments.csv. Number of records: 5
+2025-01-12 17:15:29,586:INFO:
+    id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 17:22:37,011:INFO: Reading data from file: departments.csv. Number of records: 5
+2025-01-12 17:22:37,012:INFO:
+    id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 17:22:42,645:INFO: Reading data from file: departments.csv. Number of records: 5
+2025-01-12 17:22:42,646:INFO:
+    id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 17:22:58,573:INFO: Reading data from file: departments.csv. Number of records: 5
+2025-01-12 17:22:58,574:INFO:
+    id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 17:23:18,967:INFO: Reading data from file: departments.csv. Number of records: 5
+2025-01-12 17:23:18,968:INFO:
+    id department_name
+0   1              HR
+1   2     Engineering
+2   3       Marketing
+3   4           Sales
+4   5         Finance
+2025-01-12 17:26:27,698:INFO:=====Summary of DataFrame=====
+2025-01-12 17:26:27,698:INFO: Shape: (5, 2)
+2025-01-12 17:26:27,699:INFO:
+            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 17:26:27,700:INFO:Number of duplicate records: 0
+2025-01-12 17:29:34,024:INFO:Validating data in table: departments
+2025-01-12 17:29:34,030:INFO:=====Summary of DataFrame=====
+2025-01-12 17:29:34,031:INFO: Shape: (5, 2)
+2025-01-12 17:29:34,032:INFO:
+            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 17:29:34,033:INFO:Number of duplicate records: 0
+2025-01-12 17:29:52,171:INFO: Validating data in table: departments
+2025-01-12 17:29:52,174:INFO:=====Summary of DataFrame=====
+2025-01-12 17:29:52,174:INFO: Shape: (5, 2)
+2025-01-12 17:29:52,174:INFO:
+            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 17:29:52,174:INFO:Number of duplicate records: 0
+2025-01-12 17:30:25,416:INFO: Validating data in table: departments
+2025-01-12 17:30:25,418:INFO:=====Summary of table=====
+2025-01-12 17:30:25,418:INFO: Shape: (5, 2)
+2025-01-12 17:30:25,422:INFO:
+            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 17:30:25,422:INFO:Number of duplicate records: 0
+2025-01-12 17:30:45,476:INFO: Validating data in table: departments
+2025-01-12 17:30:45,481:INFO:=====Summary of departments=====
+2025-01-12 17:30:45,481:INFO: Shape: (5, 2)
+2025-01-12 17:30:45,482:INFO:
+            id  department_name
+NaN Ratio  0.0              0.0
+2025-01-12 17:30:45,483:INFO:Number of duplicate records: 0
+2025-01-12 17:45:56,778:INFO:test

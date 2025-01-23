@@ -1,0 +1,45 @@
+2025-01-12 19:37:41,051:INFO: Reading data from file: example.csv. Number of records: 5
+2025-01-12 19:37:41,067:INFO:
+      name
+0    Fred
+1  Daphne
+2   Velma
+3  Shaggy
+4  Scooby
+2025-01-12 19:37:41,067:INFO:=====Summary of examples=====
+2025-01-12 19:37:41,067:INFO: Shape: (5, 1)
+2025-01-12 19:37:41,067:INFO:
+           name
+NaN Ratio   0.0
+2025-01-12 19:37:41,067:INFO:Number of duplicate records: 0
+2025-01-12 19:37:41,160:INFO:Table in database: departments
+2025-01-12 19:37:41,160:INFO: - Column: id, Type: INTEGER
+2025-01-12 19:37:41,160:INFO: - Column: department_name, Type: VARCHAR(50)
+2025-01-12 19:37:41,160:INFO:Table in database: employees
+2025-01-12 19:37:41,160:INFO: - Column: id, Type: INTEGER
+2025-01-12 19:37:41,160:INFO: - Column: first_name, Type: VARCHAR(50)
+2025-01-12 19:37:41,160:INFO: - Column: last_name, Type: VARCHAR(50)
+2025-01-12 19:37:41,160:INFO: - Column: date_of_birth, Type: DATE
+2025-01-12 19:37:41,160:INFO: - Column: department_id, Type: INTEGER
+2025-01-12 19:37:41,160:INFO: - Column: date_started, Type: DATE
+2025-01-12 19:37:41,160:INFO: - Column: level_id, Type: INTEGER
+2025-01-12 19:37:41,160:INFO: - Column: salary, Type: INTEGER
+2025-01-12 19:37:41,160:INFO: - Column: age, Type: INTEGER
+2025-01-12 19:37:41,160:INFO: - Column: years_at_company, Type: INTEGER
+2025-01-12 19:37:41,160:INFO: - Column: age_at_start, Type: INTEGER
+2025-01-12 19:37:41,160:INFO:Table in database: levels
+2025-01-12 19:37:41,160:INFO: - Column: id, Type: INTEGER
+2025-01-12 19:37:41,160:INFO: - Column: level_name, Type: VARCHAR(50)
+2025-01-12 19:37:41,160:INFO:Table in database: examples
+2025-01-12 19:37:41,160:INFO: - Column: id, Type: INTEGER
+2025-01-12 19:37:41,160:INFO: - Column: name, Type: VARCHAR(50)
+2025-01-12 19:37:41,160:INFO: Printing table examples:
+2025-01-12 19:37:41,177:INFO:
+Data ingestion successful for table: examples. Number of records inserted: 5
+2025-01-12 19:37:41,177:INFO: Validating data in table: examples
+2025-01-12 19:37:41,177:INFO:=====Summary of examples=====
+2025-01-12 19:37:41,177:INFO: Shape: (5, 2)
+2025-01-12 19:37:41,177:INFO:
+            id  name
+NaN Ratio  0.0   0.0
+2025-01-12 19:37:41,177:INFO:Number of duplicate records: 0
