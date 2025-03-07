@@ -1,7 +1,7 @@
 # Assessment for Data Engineer Task
 ## Purpose
 
-This test is designed to showcase your understanding of databases and data processing, together with your aptitude in a python.
+This test is designed to showcase your understanding of databases and data processing, together with your aptitude in python.
 
 ## Prerequisites
 

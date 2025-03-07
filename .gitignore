@@ -19,11 +19,20 @@ Scraping-Domains/output_batched/output_batched_10.csv
 # Employee Analysis project
 Employee-Analysis/venv
 Employee-Analysis/venvprd
-Employee-Analysis/image/__pycache__
+Employee-Analysis/flight_events_documenation.pdf
 
 
 #AirCargo-Capacity
-AirCargo-Capacity/venv
+AirCargo-Capacity-DataAnalysis/venv
+AirCargo-Capacity-DataAnalysis/DataChallenge.pdf
+AirCargo-Capacity-DataAnalysis/flight_events_documenation.pdf
+AirCargo-Capacity-DataAnalysis/data/flight_events/2022-10-04.csv
+AirCargo-Capacity-DataAnalysis/data/flight_events/2022-10-05.csv
+AirCargo-Capacity-DataAnalysis/data/flight_events/2022-10-06.csv
+AirCargo-Capacity-DataAnalysis/data/flight_events/2022-10-07.csv
+AirCargo-Capacity-DataAnalysis/data/flight_events/2022-10-08.csv
+AirCargo-Capacity-DataAnalysis/data/flight_events/2022-10-09.csv
+
 
 # Environments
 .env
